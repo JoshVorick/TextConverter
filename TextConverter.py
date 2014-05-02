@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #Cool stuff
 
+
 letterCodes = {'A' : [1,1,1,1,0,1,1,1,1,1,0,1,1,0,1],
 'B' : [1,1,1,1,0,1,1,1,0,1,0,1,1,1,1],
 'C' : [1,1,1,1,0,0,1,0,0,1,0,0,1,1,1],
@@ -30,11 +31,13 @@ letterCodes = {'A' : [1,1,1,1,0,1,1,1,1,1,0,1,1,0,1],
 ' ' : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 '!' : [0,1,0,0,1,0,0,1,0,0,0,0,0,1,0],
 '?' : [1,1,1,0,0,1,0,1,0,0,0,0,0,1,0],
-'.' : [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],}
+'.' : [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]}
 
-textToRender = "MONEY"
+
+textToRender = "CALCULUS"
 height = 9
 length = 5 * len(textToRender) + 2
+
 
 #Create array of 0s where characters will be rendered
 arr = []
@@ -59,6 +62,7 @@ for i in textToRender:
 
 string = ""
 
+
 #TEMPORARY FOR TESTING:
 for i in range(height):
   for j in range(length):
@@ -67,6 +71,7 @@ for i in range(height):
   
 #print(string)
 string = ""
+
 
 #Convert from 1s and 0s to symbols:
 top = False
@@ -114,7 +119,42 @@ for i in range(1, height - 1):
       else:
         string += u"║"
     else:
-      string += u" "
+      top = (arr[i-1][j] == 1)
+      bottom = (arr[i+1][j] == 1)
+      left = (arr[i][j-1] == 1)
+      right = (arr[i][j+1] == 1)
+      if top and bottom and left and right:
+        string += u"╬"
+      elif top and bottom and left:
+        string += u"╣"
+      elif top and bottom and right:
+        string += u"╠"
+      elif top and left and right:
+        string += u"╩"
+      elif bottom and left and right:
+        string += u"╦"
+      elif top and bottom:
+        string += u"║"
+      elif top and right:
+        string += u"╚"
+      elif left and right:
+        string += u"═"
+      elif bottom and left:
+        string += u"╗"
+      elif top and left:
+        string += u"╝"
+      elif bottom and right:
+        string += u"╔"
+      elif top:
+        string += u"╨"
+      elif bottom:
+        string += u"╥"
+      elif left:
+        string += u"╡"
+      elif right:
+        string += u"╞"
+      else:
+        string += u"║"
   string += u"\n"
   
 
