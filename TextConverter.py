@@ -2,6 +2,10 @@
 #Cool stuff
 
 
+textToRender = "ALPHABET"
+fillWith = u"░" # "" to fill cool way. Some other options: ╬ ═ ║ ─ │ ░ ▒ ▓
+
+
 letterCodes = {'A' : [1,1,1,1,0,1,1,1,1,1,0,1,1,0,1],
 'B' : [1,1,1,1,0,1,1,1,0,1,0,1,1,1,1],
 'C' : [1,1,1,1,0,0,1,0,0,1,0,0,1,1,1],
@@ -34,7 +38,6 @@ letterCodes = {'A' : [1,1,1,1,0,1,1,1,1,1,0,1,1,0,1],
 '.' : [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]}
 
 
-textToRender = "CALCULUS"
 height = 9
 length = 5 * len(textToRender) + 2
 
@@ -118,43 +121,45 @@ for i in range(1, height - 1):
         string += u"╞"
       else:
         string += u"║"
-    else:
+    elif fillWith == "":
       top = (arr[i-1][j] == 1)
       bottom = (arr[i+1][j] == 1)
       left = (arr[i][j-1] == 1)
       right = (arr[i][j+1] == 1)
       if top and bottom and left and right:
-        string += u"╬"
+        string += u"┼"
       elif top and bottom and left:
-        string += u"╣"
+        string += u"┤"
       elif top and bottom and right:
-        string += u"╠"
+        string += u"├"
       elif top and left and right:
-        string += u"╩"
+        string += u"┴"
       elif bottom and left and right:
-        string += u"╦"
+        string += u"┬"
       elif top and bottom:
-        string += u"║"
+        string += u"│"
       elif top and right:
-        string += u"╚"
+        string += u"└"
       elif left and right:
-        string += u"═"
+        string += u"─"
       elif bottom and left:
-        string += u"╗"
+        string += u"┐"
       elif top and left:
-        string += u"╝"
+        string += u"┘"
       elif bottom and right:
-        string += u"╔"
+        string += u"┌"
       elif top:
-        string += u"╨"
+        string += u"┴"
       elif bottom:
-        string += u"╥"
+        string += u"┬"
       elif left:
-        string += u"╡"
+        string += u"┤"
       elif right:
-        string += u"╞"
+        string += u"├"
       else:
-        string += u"║"
+        string += u"│"
+    else:
+      string += fillWith
   string += u"\n"
   
 
